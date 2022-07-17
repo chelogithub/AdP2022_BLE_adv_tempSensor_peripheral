@@ -93,7 +93,8 @@ void go_sleep_task(void * param) {
     vTaskDelay(seconds * 1000 / portTICK_PERIOD_MS);
     
     esp_bt_controller_disable();
-    esp_sleep_enable_timer_wakeup(30 * 1000000);
+    esp_sleep_enable_timer_wakeup(seconds * 1000000);
+    //esp_sleep_enable_timer_wakeup(30 * 1000000);
     ESP_LOGI(SENSOR_LOG_TAG, "Sleep!");
     esp_deep_sleep_start();
     vTaskDelete(NULL);

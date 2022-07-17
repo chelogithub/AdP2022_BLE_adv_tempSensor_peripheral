@@ -481,7 +481,14 @@ void app_main(void)
     tempSensor.sample_temp();
     ESP_LOGI(GATTS_TABLE_TAG, "Temperatura simulada desde float: %04.1f", *(tempSensor.temp));
     ESP_LOGI(GATTS_TABLE_TAG, "Temperatura simulada desde string: %s", (tempSensor.temp_string));
-
+    ESP_LOGI(GATTS_TABLE_TAG, "Nivel de potencia BT ADV: %d", (esp_ble_tx_power_get(ESP_BLE_PWR_TYPE_ADV )));
+    ESP_LOGI(GATTS_TABLE_TAG, "Nivel de potencia BT SCAN: %d", (esp_ble_tx_power_get(ESP_BLE_PWR_TYPE_SCAN )));
+    if((esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_ADV , ESP_PWR_LVL_P9)) <= 0)
+    {
+        ESP_LOGI(GATTS_TABLE_TAG, "Seteo de potencia BT ADV MAX OK");
+    }else {ESP_LOGI(GATTS_TABLE_TAG, "Seteo de potencia BT ADV MAX ERROR");}
+    ESP_LOGI(GATTS_TABLE_TAG, "Nivel de potencia BT ADV: %d", (esp_ble_tx_power_get(ESP_BLE_PWR_TYPE_ADV )));
+    ESP_LOGI(GATTS_TABLE_TAG, "Nivel de potencia BT SCAN: %d", (esp_ble_tx_power_get(ESP_BLE_PWR_TYPE_SCAN )));
     // Copia la temperatura del sensor, al array de caracteres que se envia en el advertising.
     // Este array de caracteres pueden ver que esta configurado en la estructura de advertising al inicio de este código.
     strncpy((char*)test_manufacturer_data, (char*)tempSensor.temp_string, 8);

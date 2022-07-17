@@ -1,9 +1,10 @@
 {
   "C_Cpp.intelliSenseEngine": "Tag Parser",
   "idf.flashType": "UART",
-  "idf.port": "/dev/ttyUSB0",
+  "idf.port": "/dev/ttyUSB1",
   "idf.adapterTargetName": "esp32",
   "files.associations": {
-    "temp_sensor.h": "c"
+    "temp_sensor.h": "c",
+    "esp_bt.h": "c"
   }
 }
